@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Noel Noche">
+		<meta name="description" content="freeCodeCamp Zipline Project: Tic-Tac-Toe. Completed by Noel Noche on December 21, 2015.">
+		
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<style>
+			a,body{color:#fff}#user-input,body{background-color:#000}.cell,.top-panel{height:5rem}#game-grid,.center,.text-center,footer{text-align:center}.cell,footer div p{display:inline-block}@font-face{font-family:'Share Tech Mono';font-style:normal;font-weight:400;src:local('Share Tech Mono'),local('ShareTechMono-Regular'),url(https://fonts.gstatic.com/s/sharetechmono/v6/RQxK-3RA0Lnf3gnnnNrAsVlgUn8GogvcKKzoM9Dh-4E.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215,U+E0FF,U+EFFD,U+F000}@font-face{font-family:ABeeZee;font-style:normal;font-weight:400;src:local('ABeeZee'),local('ABeeZee-Regular'),url(https://fonts.gstatic.com/s/abeezee/v9/yTibYMDoFfqshd01j2jrvwLUuEpTyoUstqEm5AMlJo4.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215,U+E0FF,U+EFFD,U+F000}html{position:relative;min-height:100%;font-size:18px;border:5px solid #fff;-webkit-box-shadow:inset 0 0 20px 0 rgba(255,255,255,1);-moz-box-shadow:inset 0 0 20px 0 rgba(255,255,255,1);box-shadow:inset 0 0 20px 0 rgba(255,255,255,1)}body{padding-bottom:3rem;font-family:'Share Tech Mono',sans-serif;font-size:1rem}a{text-decoration:none}.text-underline,a:hover{text-decoration:underline}a:hover{color:#9cf}.center{margin-top:35vh;font-size:5rem}#prompt-message,#user-input{margin:0;padding:0}#user-input{text-transform:uppercase;border:none}main{padding-top:1rem}#game-grid{margin:2.5rem auto 0;border-collapse:collapse;border:none}.cell{width:5rem;font-family:ABeeZee,sans-serif;font-size:3.5rem;font-weight:700}tr{border-bottom:solid 7px #fff}tr:last-of-type{border-bottom:none}td{border-right:solid 7px #fff}td:last-of-type{border-right:none}footer{position:absolute;bottom:0;width:100%;height:3rem}footer div p{margin:0 1.5rem}
+		</style>
+
+		<title>Noel Noche | App Portfolio | Tic-Tac-Toe</title>
+	</head>
+	<body>
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header>
+      <div class="container">
+        <h1 class="sr-only">Free Code Camp Zipline</h1>
+        <h2 class="sr-only">Tic-Tac-Toe</h2>
+      </div>
+    </header>
+    
+    <main>
+      <div class="container">
+      	<div class="top-panel">
+					<p id="prompt-message"></p>
+					<input type="text" id="user-input" autofocus>    		
+      	</div>
+				<table id="game-grid">
+					<tr>
+						<td class="cell"></td><td class="cell"></td><td class="cell"></td>
+					</tr>
+					<tr>
+						<td class="cell"></td><td class="cell"></td><td class="cell"></td>
+					</tr>
+					<tr>
+						<td class="cell"></td><td class="cell"></td><td class="cell"></td>
+					</tr>
+				</table>
+      </div>
+    </main>
+    
+    <footer>
+      <div class="container">
+        <p>&#169; 2016 Noel Noche</p>
+        <p><a href="https://github.com/genkibit/fcc-tictactoe/issues" target="_blank">Report an issue</a></p>
+      </div>
+    </footer>
+    
+    <script>
+			(function(){var f=null,c=null,l,d=null,m=!0,r=!1,z=!1,E=!1,A=null,n=1800,v=0,w=null,x=!1,F=document.getElementById("game-grid"),G=document.querySelector(".top-panel"),e=document.getElementById("prompt-message"),g=document.getElementById("user-input"),S=document.querySelectorAll(".cell"),k=Array.from(S),h=[],H,I,J,K,L,M,N,O,t,y=function(){this.minPlayer=this.maxPlayer=this.letter=null};y.prototype={assgnMaxMin:function(){if(null===this.letter)return console.log("Warning! Letter not assigned to COM");
+			"X"===this.letter?(this.maxPlayer="X",this.minPlayer="O"):(this.maxPlayer="O",this.minPlayer="X")},evaluatePattern:function(a){var b=0;a[0]===this.maxPlayer?b=1:a[0]===this.minPlayer&&(b=-1);if(a[1]===this.maxPlayer)if(1===b)b=10;else{if(-1===b)return 0;b=1}else if(a[1]===this.minPlayer)if(-1===b)b=-10;else{if(1===b)return 0;b=-1}if(a[2]===this.maxPlayer)if(0<b)b*=10;else{if(0>b)return 0;b=1}else a[2]===this.minPlayer&&(b=0>b?10*b:1<b?0:-1);return b},calcMoveScore:function(){for(var a=0,b=0,e=t.length;b<
+			e;b++)a+=this.evaluatePattern(t[b]);return a},genNextMoves:function(){for(var a=[],b=0;b<h.length;b++)"-"===h[b]&&a.push(b);return a},runMinimax:function(a,b){var e=this.genNextMoves(),g,c,f,B;if(0===e.length||0===a)P(h),f=this.calcMoveScore();else if(!0===b){f=-Number.MAX_VALUE;for(var d=0;d<e.length;d++)c=e[d],h[c]=this.maxPlayer,g=this.runMinimax(a-1,!1)[0],g>f&&(f=g,B=c),h[c]="-"}else for(f=Number.MAX_VALUE,d=0;d<e.length;d++)c=e[d],h[c]=this.minPlayer,g=this.runMinimax(a-1,!0)[0],g<f&&(f=g,B=
+			c),h[c]="-";return[f,B]},makeMove:function(){var a=this.runMinimax(2,!0)[1];k[a].innerHTML="X"===this.letter?"X":"O"}};var Q=function(){!0!==m&&""===this.textContent&&(this.innerHTML="X"===c?"X":"O")},C=function(){h=[];for(var a=0;a<k.length;a++)""===k[a].textContent?h.push("-"):("X"===k[a].textContent?h.push("X"):h.push("O"),"ZERO"!==f&&k[a].removeEventListener("click",q))},P=function(a){H=[a[0],a[1],a[2]];I=[a[3],a[4],a[5]];J=[a[6],a[7],a[8]];K=[a[0],a[3],a[6]];L=[a[1],a[4],a[7]];M=[a[2],a[5],a[8]];
+			N=[a[0],a[4],a[8]];O=[a[2],a[4],a[6]];t=[H,I,J,K,L,M,N,O]},T=function(){g.style.display="none";F.style.display="none";G.className+=" center";for(var a=[],b="0123456789".split(""),c="ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),f=function(){this.randomChar=null;this.genRandomChar=function(a){a?(a=Math.floor(Math.random()*c.length),this.randomChar=c[a]):(a=Math.floor(Math.random()*b.length),this.randomChar=b[a])}},d=0;10>d;d++){var h=new f;a.push(h)}window.setInterval(function(){e.innerHTML="";for(var b=0;10>
+			b;b++)2>=b||7<=b?a[b].genRandomChar(!0):a[b].genRandomChar(!1);for(b=0;10>b;b++)e.innerHTML+=a[b].randomChar},100)},U=function(){for(var a="",b,d=0,h=t.length;d<h;d++){var k=t[d].join(""),a=a+k;k.match(/X{3}|O{3}/)&&(e.innerHTML="WINNER: PLAYER "+c+"<br>WANT TO PLAY AGAIN?",g.style.display="block",g.focus(),"ZERO"===f?b=window.setTimeout(function(){window.clearTimeout(A);window.clearTimeout(b);D()},n):r=m=!0)}null===a.match(/\-/)&&(e.innerHTML="STALEMATE.<br>WANT TO PLAY AGAIN?",g.style.display="block",
+			g.focus(),"ZERO"===f?(v++,b=window.setTimeout(function(){window.clearTimeout(A);window.clearTimeout(b);D()},n)):r=m=!0)},R=function(){F.style.display="none";x=m=!0;v=0;var a,b;null===w?(g.focus(),e.innerHTML="GREETINGS PROFESSOR FALKEN."):(g.style.display="none",a=window.setTimeout(function(){z=!0;g.value="";e.innerHTML+="<br>A STRANGE GAME.<br>THE ONLY WINNING MOVE IS NOT TO PLAY.";b=window.setTimeout(function(){window.clearTimeout(a);window.clearTimeout(b);e.innerHTML+="<br>HOW ABOUT A NICE GAME OF CHESS?"},
+			7E3)},2E3))},q=function(){"TWO"===f?Q.apply(this):"ONE"===f?c!==d.letter?Q.apply(this):d.makeMove():(100===v&&R(),c===l.letter&&!0===E?(l.makeMove(),E=!1):c===l.letter?l.makeMove():d.makeMove());C();P(h);U();m||(c="X"===c?"O":"X","ZERO"===f?A=window.setTimeout(function(){q()},n):c===d.letter&&q())},D=function(){var a;d=l=null;h=[];l=new y;l.letter="X";l.assgnMaxMin();d=new y;d.letter="O";d.assgnMaxMin();n=0>n?0:n-400;k.forEach(function(a){a.textContent=""});m=!1;k[Math.floor(8*Math.random())].textContent=
+			"X";C();c="O";a=window.setTimeout(function(){window.clearTimeout(a);q()},n)},V=function(){g.style.display="none";if("ONE"===f){var a;d=new y;"X"===c?d.letter="O":(d.letter="X",a=Math.floor(8*Math.random()),k[a].textContent="X",C(),c="O");d.assgnMaxMin()}m=!1;k.forEach(function(a){a.addEventListener("click",q,!1)})},u=function(){d=l=c=f=null;m=!0;r=!1;n=1800;v=0;w=null;x=!1;h=[];g.value="";k.forEach(function(a){a.textContent="";a.removeEventListener("click",q)})},p=function(){e.innerHTML="";null===
+			f?e.innerHTML="ONE OR TWO PLAYERS?<br>PLEASE LIST NUMBER OF PLAYERS:":(e.innerHTML="X OR O?",null!==c&&(e.innerHTML="",V()))};p();window.onkeyup=function(a){var b;!0===m&&!1===z&&(a="which"in a?a.which:a.keyCode,13===a&&!0===x&&(w=g.value.toUpperCase(),w.match(/^HELLO$/)?R():(e.innerHTML='<div class="text-center">** <span class="text-underline">IDENTIFICATION NOT RECOGNIZED</span> **<br>** ACCESS DENIED **</div>',b=window.setTimeout(function(){window.clearTimeout(b);u();p()},3E3))),13===a&&!1===r&&
+			(null===f?(f=g.value.toUpperCase(),f.match(/^ZERO$/)?(e.innerHTML="",g.value="",D()):null===f.match(/^ONE$|^TWO$|^ZERO$/)?(e.innerHTML='<div class="text-center">** <span class="text-underline">IDENTIFICATION NOT RECOGNIZED</span> **<br>** ACCESS DENIED **</div>',b=window.setTimeout(function(){window.clearTimeout(b);g.value="";u();p()},3E3)):(g.value="",p())):null===c&&(c=g.value.toUpperCase(),null===c.match(/^X$|^O$/)?(e.innerHTML='<div class="text-center">** <span class="text-underline">IDENTIFICATION NOT RECOGNIZED</span> **<br>** ACCESS DENIED **</div>',
+			b=window.setTimeout(function(){window.clearTimeout(b);u();p()},3E3)):(g.value="",p()))),!0===r&&!0!==x&&(89===a?(u(),p()):78===a?(z=!0,T()):(e.innerHTML='<div class="text-center">** <span class="text-underline">IDENTIFICATION NOT RECOGNIZED</span> **<br>** ACCESS DENIED **</div>',b=window.setTimeout(function(){window.clearTimeout(b);u();p()},3E3))))}})();
+		</script>
+	</body>
+</html>
