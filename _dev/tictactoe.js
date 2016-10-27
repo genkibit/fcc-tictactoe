@@ -26,7 +26,6 @@
   var usrInput = document.getElementById('user-input');
   
   // For creating a reference to DOM array nodes
-  // https://developer.mozilla.org/en-US/docs/Web/API/NodeList
   var gridNodes = document.querySelectorAll('.cell');
   var gridArray = Array.from(gridNodes);
   
@@ -221,10 +220,8 @@
       }
       
       gridArray[comChoice].innerHTML = symbol;
-      
     }
   };
-  
   
   // Marks a grid cell on the DOM
   var markCell = function() {
@@ -241,7 +238,6 @@
       }
     }
   };
-  
   
   // Updates the grid model and win pattern data to reflect DOM grid changes
   var updateGridCopy = function() {
@@ -268,7 +264,6 @@
     }
   };
   
-  
   // Updates the win pattern array values to match updated grid copy
   // @gridRef: A reference to the original game grid (i.e., gridCopy or gridArray)
   var updatePatterns = function(gridRef) {
@@ -290,7 +285,6 @@
     patterns = [pattern1, pattern2, pattern3, pattern4, pattern5, pattern6, pattern7, pattern8];
   };
   
-
   // Runs a launch code generator like in the movie War Games
   var runLaunchCodes = function() {
     usrInput.style.display = 'none';
@@ -339,7 +333,6 @@
       }
     }, 100);
   };
-  
   
   // Checks the DOM grid for win patterns
   var checkForWinner = function() {
@@ -392,7 +385,6 @@
     }
   };
   
-  
   // War Games ending
   var runJoshua = function() {
     gameGrid.style.display = 'none';
@@ -422,7 +414,6 @@
     }
   };
   
-  
   // Switches player turns
   var switchPlayer = function() {
     if (currentPlayer === 'X') {
@@ -432,7 +423,6 @@
       currentPlayer = 'X';
     }
   };
-  
   
   // Updates the game grid state and conditionals
   var update = function() {
@@ -482,7 +472,6 @@
     }
   };
   
-  
   // Initialize states for COM vs COM
   var initializeZero = function() {
     var index;
@@ -522,7 +511,6 @@
     }, playRate);		
   };
   
-  
   // Initializes state for one and two player games
   var initialize = function() {
     usrInput.style.display = 'none';
@@ -552,7 +540,6 @@
     });
   };
   
-  
   // Resets all game variables
   var reset = function() {
     numOfPlayers = null;
@@ -573,7 +560,6 @@
       cell.removeEventListener('click', update);
     });
   };
-  
   
   // Controls logic flow of start screen prompts
   var runStartScreen = function() {
