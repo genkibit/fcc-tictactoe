@@ -18,7 +18,7 @@ The project rubric is as follows:
 
 App Link
 ---
-Access the page **[here](http://genkibit.github.io/fcc-tictactoe/)**.
+Access the page **[here](http://noelnoche.github.io/fcc-tictactoe/)**.
 
 
 Attribution
@@ -28,7 +28,7 @@ Attribution
 
 License
 ---
-Code provided under an **[MIT license](https://github.com/genkibit/fcc-tictactoe/blob/gh-pages/LICENSE.md)**.
+Code provided under an **[MIT license](https://github.com/noelnoche/fcc-tictactoe/blob/gh-pages/LICENSE.md)**.
 
 
 Changelog
